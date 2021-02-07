@@ -1,0 +1,9 @@
+{
+  "@aws-cdk/core:enableStackNameDuplicates": "true",
+  "availability-zones:account=629373475343:region=eu-central-1": [
+    "eu-central-1a",
+    "eu-central-1b",
+    "eu-central-1c"
+  ],
+  "ami:account=629373475343:filters.image-type.0=machine:filters.name.0=amzn-ami-vpc-nat-*:filters.state.0=available:owners.0=amazon:region=eu-central-1": "ami-0e899c48708d2f8b4"
+}
