@@ -80,6 +80,23 @@ export class DockerEcsSqsAutoScalingStack extends cdk.Stack {
 
     const cluster = new ecs.Cluster(this, "Cluster", { vpc });
 
+    // Create a task role that will be used within the container
+    const EcsTaskRole = new iam.Role(this, "EcsTaskRole", {
+      assumedBy: new iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
+    });
+
+    EcsTaskRole.attachInlinePolicy(
+      new iam.Policy(this, "SQSAdminAccess", {
+        statements: [
+          new iam.PolicyStatement({
+            actions: ["sqs:*"],
+            effect: iam.Effect.ALLOW,
+            resources: [messageQueue.queueArn],
+          }),
+        ],
+      })
+    );    
+
     // Create task definition
     const fargateTaskDefinition = new ecs.FargateTaskDefinition(
       this,
@@ -87,6 +104,7 @@ export class DockerEcsSqsAutoScalingStack extends cdk.Stack {
       {
         memoryLimitMiB: 4096,
         cpu: 2048,
+        taskRole: EcsTaskRole
       }
     );
 
