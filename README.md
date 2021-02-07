@@ -1,9 +1,8 @@
-# Welcome to your CDK TypeScript project!
+# 💸 Deploy low cost ECS tasks based on SQS queue size with AWS CDK
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`DockerEcsSqsAutoScalingStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+In this post we are building a system that scales up and down based on the amount of messages in the SQS queue. It allows users to do REST-API calls to an Amazon API Gateway endpoint from their applications or computers. This will add a new item to the SQS queue. In turn, this will trigger your task on ECS. After you're task is finished it will delete the item from the SQS queue which will automatically scale down you're ECS cluster and task. 
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+The complete post that contains all the information you need can be found on https://www.nbtl.blog/low-cost-automated-video-generation-with-sqs-and-ecs/
 
 ## Useful commands
 

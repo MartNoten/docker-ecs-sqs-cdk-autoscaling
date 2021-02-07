@@ -2,7 +2,7 @@ import boto3
 
 sqs = boto3.client('sqs')
 
-queue_url = 'https://sqs.eu-central-1.amazonaws.com/629373475343/CdkDemoStack-CdkDemoQueue32E7553B-5GEYSDQGXR7Q'
+queue_url = 'https://sqs.eu-central-1.amazonaws.com/629373475343/DockerEcsSqsAutoScalingStack-DockerEcsSqsAutoScalingQueue2DAE4A36-5DMX2GTEINGG' # <-- Dont forget to change this to your SQS url
 
 def delete_sqs_message(receipt_handle):
     print(f"Deleting message {receipt_handle}")
